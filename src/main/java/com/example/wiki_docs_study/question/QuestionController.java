@@ -31,7 +31,7 @@ public class QuestionController {
     public String detail(Model model, @PathVariable("id") Integer id) {
 
         Question q = this.questionService.getQuestion(id);
-        model.addAttribute("q", q);
+        model.addAttribute("question", q);
         return "question_detail";
     }
 
