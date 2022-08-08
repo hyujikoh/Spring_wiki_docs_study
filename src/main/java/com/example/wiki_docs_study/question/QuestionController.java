@@ -1,13 +1,14 @@
 package com.example.wiki_docs_study.question;
 
 
+import com.example.wiki_docs_study.answer.AnswerForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 import java.util.List;
 
 @RequestMapping("/question")
@@ -27,12 +28,31 @@ public class QuestionController {
         return "question_list";
     }
 
-    @RequestMapping(value = "/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id) {
+    @RequestMapping("/detail/{id}")
+    public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
 
         Question q = this.questionService.getQuestion(id);
         model.addAttribute("question", q);
         return "question_detail";
     }
+
+    @RequestMapping("/create")
+    public String questionCreate(QuestionForm questionForm) {
+        return "question_form";
+    }
+
+
+    @PostMapping("/create")
+    public String postQuestion(@Valid QuestionForm questionForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "question_form";
+        }
+        this.questionService.postQuestion(questionForm.getSubject(), questionForm.getContent());
+
+        return "question_list";
+    }
+
+
+
 
 }
