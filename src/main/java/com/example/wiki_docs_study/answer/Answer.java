@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import javax.persistence.*;
 
 import com.example.wiki_docs_study.question.Question;
+import com.example.wiki_docs_study.user.SiteUser;
 import lombok.Getter;
 import lombok.Setter;
 @Getter
@@ -22,4 +23,7 @@ public class Answer {
 
     @ManyToOne
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
 }

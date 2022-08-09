@@ -139,10 +139,19 @@ class WikiDocsStudyApplicationTests {
 
     @Test
     void 샘플데이터만들기() {
+        for (int i = 1; i <= 303; i++) {
+            String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용무";
+            this.questionService.postQuestion(subject, content,null);
+        }
+    }
+
+    @Test
+    void author수정() {
         for (int i = 1; i <= 300; i++) {
             String subject = String.format("테스트 데이터입니다:[%03d]", i);
             String content = "내용무";
-            this.questionService.postQuestion(subject, content);
+            this.questionService.postQuestion(subject, content, null);
         }
     }
 

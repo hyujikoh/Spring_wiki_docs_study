@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.example.wiki_docs_study.answer.Answer;
+import com.example.wiki_docs_study.user.SiteUser;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,4 +33,8 @@ public class Question {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+
+    @ManyToOne
+    private SiteUser author;
+
 }

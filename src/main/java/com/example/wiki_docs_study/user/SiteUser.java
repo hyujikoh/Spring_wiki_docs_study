@@ -17,8 +17,9 @@ public class SiteUser {
     @Column(unique = true)
     private String username;
 
-    @Column(columnDefinition = "TEXT")
-    private String user_password;
+
+    @Column(columnDefinition = "TEXT",name="user_password")
+    private String password;
 
     @Column(unique = true)
     private String email;

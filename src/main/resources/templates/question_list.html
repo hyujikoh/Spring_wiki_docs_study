@@ -1,27 +1,29 @@
 <html layout:decorate="~{layout}" >
 <div layout:fragment="content" class="container my-3">
-<table  class="table">
-    <thead class="table-dark">
-    <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성일시</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="question, loop : ${paging}">
-        <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
-        <td>
-            <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
-            <span class="text-danger small ms-2"
-                  th:if="${#lists.size(question.answerList) > 0}"
-                  th:text="|답글 (${#lists.size(question.answerList)})|">
-            </span>
-        </td>
-        <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
-    </tr>
-    </tbody>
-</table>
+    <table  class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="question, loop : ${paging}">
+            <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
+            <td>
+                <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+                <span class="text-danger small ms-2"
+                      th:if="${#lists.size(question.answerList) > 0}"
+                      th:text="${#lists.size(question.answerList)}">
+                <!-- 페이징처리 th:text="|답글 (${#lists.size(question.answerList)})|">시작 -->
+                </span>
+            </td>
+            <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- 페이징처리 시작 -->
     <!-- 페이징처리 시작 -->
     <div th:if="${!paging.isEmpty()}">
         <ul class="pagination justify-content-center">
@@ -33,7 +35,6 @@
             </li>
             <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
                 th:if="${page >= paging.number-5 and page <= paging.number+5}"
-                th:classappend="${page == paging.number} ? 'active'"
                 class="page-item">
                 <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
             </li>
