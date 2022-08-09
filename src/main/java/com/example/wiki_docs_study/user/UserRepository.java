@@ -1,4 +1,6 @@
 package com.example.wiki_docs_study.user;
 
-public class UserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<SiteUser, Long> {
 }
