@@ -4,6 +4,7 @@ import com.example.wiki_docs_study.answer.Answer;
 import com.example.wiki_docs_study.answer.AnswerRepository;
 import com.example.wiki_docs_study.question.Question;
 import com.example.wiki_docs_study.question.QuestionRepository;
+import com.example.wiki_docs_study.question.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +25,8 @@ class WikiDocsStudyApplicationTests {
 
     @Autowired
     private AnswerRepository answerRepository;
-
+    @Autowired
+    private QuestionService questionService;
     @Test
     void testJpa() {
         Question q1 = new Question();
@@ -133,6 +135,16 @@ class WikiDocsStudyApplicationTests {
         assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
     }
     //sbb에 대해서 알고 싶습니다.
+
+
+    @Test
+    void 샘플데이터만들기() {
+        for (int i = 1; i <= 300; i++) {
+            String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용무";
+            this.questionService.postQuestion(subject, content);
+        }
+    }
 
 
 }
