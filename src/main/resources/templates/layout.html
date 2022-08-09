@@ -8,10 +8,19 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
     <!-- sbb CSS -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <!-- Bootstrap JS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/js/bootstrap.min.js}">
+
     <title>this is wikidocs from tigershrimp</title>
 </head>
 <body>
+
+
+
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+
+<nav th:replace="navbar :: navbarFragment"></nav>
+
 <th:block layout:fragment="content"></th:block>
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
 </body>
