@@ -17,7 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
-import java.util.List;
+
 
 @RequestMapping("/question")
 @RequiredArgsConstructor
