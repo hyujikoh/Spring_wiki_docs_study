@@ -17,7 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
-import java.util.List;
+
 
 @RequestMapping("/question")
 @RequiredArgsConstructor
@@ -28,7 +28,7 @@ public class QuestionController {
     private final QuestionRepository questionRepository;
     private final QuestionService questionService;
     private final UserService userService;
-
+   //asd
     @RequestMapping("/list")
     public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
 
