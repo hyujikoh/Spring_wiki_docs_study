@@ -2,6 +2,7 @@ package com.example.wiki_docs_study.question;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -29,7 +30,7 @@ public class Question {
 
     private LocalDateTime createDate;
 
-
+    private LocalDateTime modifyDate;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
@@ -37,4 +38,7 @@ public class Question {
     @ManyToOne
     private SiteUser author;
 
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }

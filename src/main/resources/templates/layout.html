@@ -9,7 +9,9 @@
     <!-- sbb CSS -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <!-- Bootstrap JS -->
-    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+
+
 
 
     <title>this is wikidocs from tigershrimp</title>
@@ -24,5 +26,9 @@
 
 <th:block layout:fragment="content"></th:block>
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<!-- 자바스크립트 Start -->
+<th:block layout:fragment="script"></th:block>
+<!-- 자바스크립트 End -->
 </body>
 </html>

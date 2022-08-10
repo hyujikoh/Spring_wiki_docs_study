@@ -1,6 +1,7 @@
 package com.example.wiki_docs_study.answer;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -21,9 +22,15 @@ public class Answer {
 
     private LocalDateTime createDate;
 
+    private LocalDateTime modifyDate;
+
     @ManyToOne
     private Question question;
 
     @ManyToOne
     private SiteUser author;
+
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }
