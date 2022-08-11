@@ -2,6 +2,7 @@ package com.example.wiki_docs_study.question;
 
 
 import com.example.wiki_docs_study.answer.AnswerForm;
+import com.example.wiki_docs_study.config.BaseResponse;
 import com.example.wiki_docs_study.user.SiteUser;
 import com.example.wiki_docs_study.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RequestMapping("/question")
@@ -36,7 +39,10 @@ public class QuestionController {
        model.addAttribute("paging", paging);
        model.addAttribute("kw", kw);
        return "question_list";
+       //return "question_list_use_api";
    }
+
+
 
     @RequestMapping("/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
