@@ -17,4 +17,9 @@ public class HomeController {
     public String root() {
         return "redirect:/question/list";
     }
+
+    @RequestMapping("/kakao2")
+    public String kakao2() {
+        return "kakao2";
+    }
 }

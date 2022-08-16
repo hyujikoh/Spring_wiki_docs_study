@@ -8,12 +8,14 @@ import com.example.wiki_docs_study.question.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -122,17 +124,23 @@ class WikiDocsStudyApplicationTests {
         Answer a = oa.get();
         assertEquals(2, a.getQuestion().getId());
     }
+
+    //@Transactional을 적용할때 테스트 케이스일때만 rollback(true)가 디폴트인가요?
     @Transactional
     @Test
+    @Rollback(false)
     void 답변에연결된질문_질문에연결된답변찾기() {
-        Optional<Question> oq = this.questionRepository.findById(2);
-        assertTrue(oq.isPresent());
-        Question q = oq.get();
+        Question oq = this.questionRepository.findById(313).get();
+//        assertTrue(oq.isPresent());
+//        Question q = oq.get();
 
-        List<Answer> answerList = q.getAnswerList();
+        List<Answer> answerList = oq.getAnswerList();
 
         assertEquals(1, answerList.size());
-        assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+        assertEquals("asdasd,", answerList.get(0).getContent());
+
+        assertThat(answerList.size()).isEqualTo(2);
+        assertThat(answerList.get(0).getContent()).isEqualTo("asdasd,");
     }
     //sbb에 대해서 알고 싶습니다.
 

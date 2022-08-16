@@ -7,11 +7,15 @@ import javax.persistence.*;
 
 import com.example.wiki_docs_study.question.Question;
 import com.example.wiki_docs_study.user.SiteUser;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

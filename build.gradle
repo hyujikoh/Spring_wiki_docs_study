@@ -37,6 +37,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.commonmark:commonmark:0.18.2'
+
+    // https://mvnrepository.com/artifact/org.webjars.bower/jquery
+    implementation group: 'org.webjars.bower', name: 'jquery', version: '3.3.1'
+// https://mvnrepository.com/artifact/org.json/json
+    implementation group: 'org.json', name: 'json', version: '20220320'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
+
+
+
+
 }
 
 tasks.named('test') {

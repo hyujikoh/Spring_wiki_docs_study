@@ -15,6 +15,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * 로그인을 안해도 돌아갈수 있게 한다,
  *
@@ -40,12 +42,23 @@ public class SecurityConfig {
                 .and()
                 .formLogin()
                 .loginPage("/user/login")
-                .defaultSuccessUrl("/")
+                .successHandler((request, response, authentication) -> {
+                    HttpSession session = request.getSession(false);
+                    session.setMaxInactiveInterval(18000);
+                    session.setAttribute("name",userSecurityService.name());
+                    session.setAttribute("pwd",userSecurityService.pwd());
+                    System.out.println(session.getAttribute("name"));
+                    System.out.println(session.getAttribute("pwd"));
+                    response.sendRedirect("/");
+                })
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                .logoutSuccessUrl("/")
-                .invalidateHttpSession(true)
+                .logoutSuccessHandler((request, response, authentication) -> {
+                    HttpSession session = request.getSession();
+                    session.invalidate();
+                    response.sendRedirect("/");
+                })
         ;
         return http.build();
     }

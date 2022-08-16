@@ -25,6 +25,8 @@ import lombok.RequiredArgsConstructor;
 public class UserSecurityService implements UserDetailsService {
 
     private final UserRepository userRepository;
+    private String name;
+    private String pwd;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -33,6 +35,10 @@ public class UserSecurityService implements UserDetailsService {
             throw new UsernameNotFoundException("사용자를 찾을수 없습니다.");
         }
         SiteUser siteUser = _siteUser.get();
+        String name = siteUser.getUsername();
+        String pwd = siteUser.getPassword();
+        this.name = name;
+        this.pwd = pwd;
         List<GrantedAuthority> authorities = new ArrayList<>();
         if ("admin".equals(username)) {
             authorities.add(new SimpleGrantedAuthority(UserRole.ADMIN.getValue()));
@@ -40,5 +46,11 @@ public class UserSecurityService implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(UserRole.USER.getValue()));
         }
         return new User(siteUser.getUsername(), siteUser.getPassword(), authorities);
+    }
+    public String name(){
+        return name;
+    }
+    public String pwd(){
+        return pwd;
     }
 }
