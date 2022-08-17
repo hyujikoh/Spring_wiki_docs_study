@@ -26,7 +26,7 @@ public class kakaoController {
 
     private final kakaoRepository kakaoRepository;
     @ResponseBody
-    @GetMapping("/desc")
+    @GetMapping("/saveLoad")
     public List<String> desc_to_lag(){
 
         URL obj;
@@ -35,7 +35,14 @@ public class kakaoController {
             List<Gym>  gymList= this.kakaoRepository.findAll();
             List<String> result_list = new ArrayList<>();
             for (Gym g :gymList){
+                if(g.getLat()!=0||g.getLng()!=0){
+                    continue;
+                }
+
                 String address = g.getGymAddress();
+                if(address.equals("")||address.equals(null)){
+                    continue;
+                }
                 System.out.println(address);
                 String test_List = URLEncoder.encode(address, "UTF-8");
                 System.out.println("address"+test_List);
@@ -68,8 +75,8 @@ public class kakaoController {
                 JSONObject jObject2 = jarray.getJSONObject(0);
                 double x = jObject2.getDouble("x");
                 double y = jObject2.getDouble("y");
-                g.setLat(x);
-                g.setLng(y);
+                g.setLng(x);
+                g.setLat(y);
 
                 this.kakaoRepository.save(g);
                 System.out.println( "x : " + x +", Y :" + y);

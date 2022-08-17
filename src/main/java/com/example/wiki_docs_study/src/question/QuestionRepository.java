@@ -1,4 +1,4 @@
-package com.example.wiki_docs_study.question;
+package com.example.wiki_docs_study.src.question;
 
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;

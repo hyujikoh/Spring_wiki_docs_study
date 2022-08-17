@@ -1,4 +1,4 @@
-package com.example.wiki_docs_study.user;
+package com.example.wiki_docs_study.src.user;
 
 import com.example.wiki_docs_study.error.DataNotFoundException;
 import lombok.RequiredArgsConstructor;

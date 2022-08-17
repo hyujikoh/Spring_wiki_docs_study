@@ -1,8 +1,8 @@
-package com.example.wiki_docs_study.question;
+package com.example.wiki_docs_study.src.question;
 
-import com.example.wiki_docs_study.answer.Answer;
+import com.example.wiki_docs_study.src.answer.Answer;
 import com.example.wiki_docs_study.error.DataNotFoundException;
-import com.example.wiki_docs_study.user.SiteUser;
+import com.example.wiki_docs_study.src.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,14 +18,10 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.springframework.data.jpa.domain.Specification;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static javax.persistence.criteria.JoinType.*;
 
 @RequiredArgsConstructor
 @Service

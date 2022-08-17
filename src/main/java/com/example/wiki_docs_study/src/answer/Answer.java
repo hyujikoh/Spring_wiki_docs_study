@@ -1,12 +1,12 @@
-package com.example.wiki_docs_study.answer;
+package com.example.wiki_docs_study.src.answer;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
 import javax.persistence.*;
 
-import com.example.wiki_docs_study.question.Question;
-import com.example.wiki_docs_study.user.SiteUser;
+import com.example.wiki_docs_study.src.question.Question;
+import com.example.wiki_docs_study.src.user.SiteUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

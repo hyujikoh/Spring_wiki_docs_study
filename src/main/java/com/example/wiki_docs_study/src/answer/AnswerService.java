@@ -1,9 +1,9 @@
-package com.example.wiki_docs_study.answer;
+package com.example.wiki_docs_study.src.answer;
 
 
 import com.example.wiki_docs_study.error.DataNotFoundException;
-import com.example.wiki_docs_study.question.Question;
-import com.example.wiki_docs_study.user.SiteUser;
+import com.example.wiki_docs_study.src.question.Question;
+import com.example.wiki_docs_study.src.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.wiki_docs_study.answer;
+package com.example.wiki_docs_study.src.answer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

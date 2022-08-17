@@ -37,8 +37,27 @@
                 position : new kakao.maps.LatLng(positions.lat, positions.lng)
             });
 
-            var iwContent = '<div style="background-color: red;">이 마커의 좌표는 <a href="/">' + positions.gym_name.toString() + '</a>입니다.</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            var iwContent = '<div style="padding:5px;"> <a href="/" style="text-align:center;">'+positions.gym_name.toString()+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                 iwRemoveable = true;
+            var infowindow = new kakao.maps.InfoWindow({
+                position : new kakao.maps.LatLng(positions.lat, positions.lng),
+                content : iwContent
+            });
+            // kakao.maps.event.addListener(map, 'zoom_changed', function() {
+            //     // 지도의 현재 레벨을 얻어옵니다
+            //     var level = map.getLevel();
+            //     if(level>=7){
+            //         infowindow.close(map, marker);
+            //     }
+            //     else{
+            //
+            //         infowindow.open(map, marker);
+            //     }
+            //
+            //
+            // });
+
+
             kakao.maps.event.addListener(marker, 'click', function() {
                 if (prevInfo) prevInfo.setMap(null);
                 var pos = marker.getPosition();
@@ -47,7 +66,6 @@
                     disableAutoPan:true,
                     removable : iwRemoveable,
                     content: iwContent
-
                 });
                 info.setMap(map);
                 prevInfo = info;

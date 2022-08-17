@@ -1,10 +1,9 @@
-package com.example.wiki_docs_study.question;
+package com.example.wiki_docs_study.src.question;
 
 
-import com.example.wiki_docs_study.answer.AnswerForm;
-import com.example.wiki_docs_study.config.BaseResponse;
-import com.example.wiki_docs_study.user.SiteUser;
-import com.example.wiki_docs_study.user.UserService;
+import com.example.wiki_docs_study.src.answer.AnswerForm;
+import com.example.wiki_docs_study.src.user.SiteUser;
+import com.example.wiki_docs_study.src.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -19,8 +18,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @RequestMapping("/question")

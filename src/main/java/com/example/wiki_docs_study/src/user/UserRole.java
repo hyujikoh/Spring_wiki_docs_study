@@ -1,4 +1,4 @@
-package com.example.wiki_docs_study.user;
+package com.example.wiki_docs_study.src.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

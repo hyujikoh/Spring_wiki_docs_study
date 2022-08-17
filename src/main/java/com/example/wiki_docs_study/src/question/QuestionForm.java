@@ -1,4 +1,4 @@
-package com.example.wiki_docs_study.question;
+package com.example.wiki_docs_study.src.question;
 
 import lombok.Getter;
 import lombok.Setter;

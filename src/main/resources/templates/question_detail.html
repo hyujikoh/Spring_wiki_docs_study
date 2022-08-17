@@ -3,8 +3,12 @@
 
     <!-- 만들었습니다.>
     < 질문 !-->
+
+    <!-- 글의 제목>
+    <  !-->
     <h2 class="border-bottom py-2" th:text="${question.subject}"></h2>
     <div class="card my-3">
+
         <div class="card-body">
 
             <div class="card-text" th:utext="${@commonUtil.markdown(question.content)}"></div>
@@ -41,6 +45,8 @@
                 </div>
             </div>
         </div>
+
+
     </div>
     <!-- 답변의 갯수 표시 -->
     <h5 class="border-bottom my-3 py-2"

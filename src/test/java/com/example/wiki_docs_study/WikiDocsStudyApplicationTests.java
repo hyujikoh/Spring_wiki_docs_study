@@ -1,10 +1,10 @@
 package com.example.wiki_docs_study;
 
-import com.example.wiki_docs_study.answer.Answer;
-import com.example.wiki_docs_study.answer.AnswerRepository;
-import com.example.wiki_docs_study.question.Question;
-import com.example.wiki_docs_study.question.QuestionRepository;
-import com.example.wiki_docs_study.question.QuestionService;
+import com.example.wiki_docs_study.src.answer.Answer;
+import com.example.wiki_docs_study.src.answer.AnswerRepository;
+import com.example.wiki_docs_study.src.question.Question;
+import com.example.wiki_docs_study.src.question.QuestionRepository;
+import com.example.wiki_docs_study.src.question.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

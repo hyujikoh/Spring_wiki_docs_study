@@ -1,11 +1,11 @@
-package com.example.wiki_docs_study.answer;
+package com.example.wiki_docs_study.src.answer;
 
 
 
-import com.example.wiki_docs_study.question.Question;
-import com.example.wiki_docs_study.question.QuestionService;
-import com.example.wiki_docs_study.user.SiteUser;
-import com.example.wiki_docs_study.user.UserService;
+import com.example.wiki_docs_study.src.question.Question;
+import com.example.wiki_docs_study.src.question.QuestionService;
+import com.example.wiki_docs_study.src.user.SiteUser;
+import com.example.wiki_docs_study.src.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
