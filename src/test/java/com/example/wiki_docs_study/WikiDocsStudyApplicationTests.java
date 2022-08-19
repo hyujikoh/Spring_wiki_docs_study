@@ -5,6 +5,8 @@ import com.example.wiki_docs_study.src.answer.AnswerRepository;
 import com.example.wiki_docs_study.src.question.Question;
 import com.example.wiki_docs_study.src.question.QuestionRepository;
 import com.example.wiki_docs_study.src.question.QuestionService;
+import com.example.wiki_docs_study.src.user.UserService;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +31,9 @@ class WikiDocsStudyApplicationTests {
     private AnswerRepository answerRepository;
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private UserService userService;
     @Test
     void testJpa() {
         Question q1 = new Question();
@@ -161,6 +166,12 @@ class WikiDocsStudyApplicationTests {
             String content = "내용무";
             this.questionService.postQuestion(subject, content, null);
         }
+    }
+
+    @Test
+    @DisplayName("회원가입이 가능하다.")
+    public void t1() {
+        userService.create("user1", "user1@email.com", "1234");
     }
 
 

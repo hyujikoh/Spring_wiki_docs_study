@@ -33,31 +33,33 @@ public class SecurityConfig {
 
 
         // 모든 인증되지 않은 요청을 허락한다는 의미
-        http.authorizeRequests().antMatchers("/**").permitAll()
+        http.authorizeRequests()
+                .antMatchers("/**")
+                    .permitAll()
                 .and()
                 .headers()
-                .addHeaderWriter(new XFrameOptionsHeaderWriter(
-                        XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+                    .addHeaderWriter(new XFrameOptionsHeaderWriter(
+                            XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
                 .and()
                 .formLogin()
-                .loginPage("/user/login")
-                .successHandler((request, response, authentication) -> {
-                    HttpSession session = request.getSession(false);
-                    session.setMaxInactiveInterval(18000);
-                    session.setAttribute("name",userSecurityService.name());
-                    session.setAttribute("pwd",userSecurityService.pwd());
-                    System.out.println(session.getAttribute("name"));
-                    System.out.println(session.getAttribute("pwd"));
-                    response.sendRedirect("/");
-                })
+                    .loginPage("/user/login")
+                    .successHandler((request, response, authentication) -> {
+                        HttpSession session = request.getSession(false);
+                        session.setMaxInactiveInterval(18000);
+                        session.setAttribute("name",userSecurityService.name());
+                        session.setAttribute("pwd",userSecurityService.pwd());
+                        System.out.println(session.getAttribute("name"));
+                        System.out.println(session.getAttribute("pwd"));
+                        response.sendRedirect("/");
+                    })
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                .logoutSuccessHandler((request, response, authentication) -> {
-                    HttpSession session = request.getSession();
-                    session.invalidate();
-                    response.sendRedirect("/");
-                })
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+                    .logoutSuccessHandler((request, response, authentication) -> {
+                        HttpSession session = request.getSession();
+                        session.invalidate();
+                        response.sendRedirect("/");
+                    })
         ;
         return http.build();
     }

@@ -35,6 +35,8 @@ public class UserController {
                     "2개의 패스워드가 일치하지 않습니다.");
             return "signup_form";
         }
+
+
         // 이메일 도메인은 unique 하기때문에 해당 속성을 처리 하기 위한 중복회원가입여부 확인
         try {
             userService.create(userCreateForm.getUsername(),
