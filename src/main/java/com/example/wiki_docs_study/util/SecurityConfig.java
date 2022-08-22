@@ -60,6 +60,7 @@ public class SecurityConfig {
                         session.invalidate();
                         response.sendRedirect("/");
                     })
+                .invalidateHttpSession(true)
         ;
         return http.build();
     }

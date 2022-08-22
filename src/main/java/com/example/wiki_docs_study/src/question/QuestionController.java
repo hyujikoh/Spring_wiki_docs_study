@@ -36,8 +36,7 @@ public class QuestionController {
        Page<Question> paging = this.questionService.getList(page, kw);
        model.addAttribute("paging", paging);
        model.addAttribute("kw", kw);
-       System.out.println(session.getAttribute("name"));
-       System.out.println(session.getAttribute("pwd"));
+       System.out.println(session.getAttribute("SPRING_SECURITY_CONTEXT"));
        return "question_list";
        //return "question_list_use_api";
    }
