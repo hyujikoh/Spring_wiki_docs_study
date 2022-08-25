@@ -32,8 +32,8 @@ public class QuestionController {
    //asd
    @RequestMapping("/list")
    public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
-                      @RequestParam(value = "kw", defaultValue = "") String kw,HttpSession session) {
-       Page<Question> paging = this.questionService.getList(page, kw);
+                      @RequestParam(value = "kw", defaultValue = "") String kw,HttpSession session,@RequestParam(value = "sortCode", defaultValue = "") String sortCode) {
+       Page<Question> paging = this.questionService.getList(page, kw,sortCode);
        model.addAttribute("paging", paging);
        model.addAttribute("kw", kw);
        System.out.println(session.getAttribute("SPRING_SECURITY_CONTEXT"));

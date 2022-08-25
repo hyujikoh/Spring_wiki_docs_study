@@ -51,10 +51,19 @@ public class QuestionService {
         this.questionRepository.save(q);
     }
 
-    public Page<Question> getList(int page,String kw) {
+    public Page<Question> getList(int page,String kw,String sortCode) {
 
         List<Sort.Order> sorts = new ArrayList<>();
-        sorts.add(Sort.Order.desc("createDate"));
+
+        if(sortCode.equals("old")){
+            sorts.add(Sort.Order.asc("createDate"));
+
+        }
+        if(sortCode.equals("new")){
+            sorts.add(Sort.Order.desc("createDate"));
+
+        }
+
 
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
         Specification<Question> spec = search(kw);
